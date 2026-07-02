@@ -1,0 +1,12 @@
+{
+  "name": "coolify-test-server",
+  "version": "1.0.0",
+  "description": "A simple Node.js Hello World server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
