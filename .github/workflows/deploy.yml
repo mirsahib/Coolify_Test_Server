@@ -3,7 +3,7 @@ name: Deploy to Coolify over Tailscale
 on:
   push:
     branches:
-      - master # Change this if your default branch is different (e.g., 'master')
+      - master 
 
 jobs:
   deploy:
@@ -13,20 +13,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 1. Connect the GitHub runner to your Tailscale network
+      # 1. Connect the GitHub runner to your Tailscale network (Upgraded to v4)
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v2
+        uses: tailscale/github-action@v4
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
-          tags: tag:ci # This is mandatory when using OAuth
-          version: latest # Or specify a version
+          tags: tag:ci 
+          version: latest 
 
       # 2. Trigger the Coolify deployment via internal Tailnet route
       - name: Trigger Coolify Webhook
         run: |
           echo "Triggering Coolify deployment..."
-          # The -k flag ignores SSL warnings if your internal URL uses self-signed HTTPs
-          # The -s flag makes it silent, hiding the progress bar
-          curl -k -s -X GET "${{ secrets.Ck3aujXtRb2t5oNfJPMS2Pn4QBeKdHjUQ2R4aRW3 }}"
+          # Replaced the hardcoded value with the correct Secret Name
+          curl -k -s -X GET "${{ secrets.COOLIFY_WEBHOOK_URL }}"
           echo -e "\nDeployment triggered successfully!"
