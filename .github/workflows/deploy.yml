@@ -17,7 +17,9 @@ jobs:
       - name: Connect to Tailscale
         uses: tailscale/github-action@v2
         with:
-          authkey: ${{ secrets.tskey-auth-k4sy5srC5v11CNTRL-qHu34Mv2fGJvMFBZXxJcHJ7tn5J57cwt }}
+          oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
+          tags: tag:ci # This is mandatory when using OAuth
           version: latest # Or specify a version
 
       # 2. Trigger the Coolify deployment via internal Tailnet route
