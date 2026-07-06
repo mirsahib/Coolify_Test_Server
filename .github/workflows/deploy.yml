@@ -19,7 +19,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TAILSCALE_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
-          tags: tag:ci 
+          tags: tag:CI 
           version: latest 
 
       # 2. Trigger the Coolify deployment via internal Tailnet route
