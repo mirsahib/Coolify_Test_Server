@@ -3,7 +3,7 @@ name: Deploy to Coolify over Tailscale
 on:
   push:
     branches:
-      - main # Change this if your default branch is different (e.g., 'master')
+      - master # Change this if your default branch is different (e.g., 'master')
 
 jobs:
   deploy:
