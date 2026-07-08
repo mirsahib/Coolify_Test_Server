@@ -14,7 +14,8 @@ CMD ["npm", "start"]
 FROM base AS production
 ENV NODE_ENV=production
 RUN npm install --omit=dev
-COPY . .
+COPY --chown=node:node . .
+RUN chown -R node:node /app
 # Run as non-root user for security
 USER node
 EXPOSE 3000
