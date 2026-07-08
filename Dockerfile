@@ -2,19 +2,18 @@
 FROM node:20-alpine AS base
 WORKDIR /app
 COPY package*.json ./
-# We would run npm install here if we had dependencies
 
 # Stage 2: Development environment
 FROM base AS development
 ENV NODE_ENV=development
-# Install development dependencies if any
+RUN npm install
 COPY . .
 CMD ["npm", "start"]
 
 # Stage 3: Production environment
 FROM base AS production
 ENV NODE_ENV=production
-# We would use npm ci --only=production if we had dependencies
+RUN npm install --omit=dev
 COPY . .
 # Run as non-root user for security
 USER node
